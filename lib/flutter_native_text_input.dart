@@ -101,7 +101,7 @@ class NativeTextInput extends StatefulWidget {
     this.iosOptions,
     this.keyboardType = KeyboardType.defaultType,
     this.maxLines = 1,
-    this.minHeightPadding = 18,
+    this.minHeightPadding = 16,
     this.minLines = 1,
     this.placeholder,
     this.placeholderColor,
@@ -512,7 +512,7 @@ class _NativeTextInputState extends State<NativeTextInput> {
       if (defaultTargetPlatform == TargetPlatform.android) {
         maxLineHeight += widget.minHeightPadding;
       } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-        maxLineHeight += 13;
+        maxLineHeight += widget.minHeightPadding / 2;
       }
       return _contentHeight > maxLineHeight ? maxLineHeight : _contentHeight;
     }
