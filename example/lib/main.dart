@@ -26,6 +26,8 @@ class _MyAppState extends State<MyApp> {
 
 class HomePage extends StatelessWidget {
   final _controller = TextEditingController();
+  final _cupertinoController = TextEditingController();
+
   final FocusNode _focusNode = FocusNode();
 
   _onChangeText(value) => debugPrint("_onChangeText: $value");
@@ -55,6 +57,7 @@ class HomePage extends StatelessWidget {
           DemoItem(
             title: 'Flutter CupertinoTextField Example Usage',
             child: CupertinoTextField(
+              controller: _cupertinoController,
               autocorrect: true,
               cursorColor: Colors.black87,
               decoration: BoxDecoration(

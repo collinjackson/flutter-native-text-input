@@ -9,7 +9,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final _messageController = TextEditingController();
+  final _messageController = TextEditingController(text: 'Test Text');
   final _focusNode = FocusNode();
 
   late final _messageNotifier = ValueNotifier(_messageController.text.isEmpty);
@@ -66,7 +66,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           const SizedBox(width: 9.0),
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.only(left:0, right:8),
+                              padding: const EdgeInsets.only(left: 0, right: 8),
                               child: NativeTextInput(
                                 style: TextStyle(
                                   letterSpacing: '-15@17'.va,
@@ -91,7 +91,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                   ),
                                 ),
                                 placeholder: 'Message',
-                                textCapitalization: TextCapitalization.sentences,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 onChanged: (val) {
                                   final isEmpty = val.trim().isEmpty;
                                   _messageNotifier.value = isEmpty;
@@ -124,16 +125,21 @@ class _ChatScreenState extends State<ChatScreen> {
                   const SizedBox(
                     width: 8,
                   ),
-                  Container(
-                    height: 36,
-                    width: 36,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF007AEA),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.send,
-                      color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      print(_messageController.text);
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF007AEA),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
